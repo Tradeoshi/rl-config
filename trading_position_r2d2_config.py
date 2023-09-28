@@ -1,7 +1,7 @@
 # rl-config
 from easydict import EasyDict
 
-collector_env_num = 5
+collector_env_num = 3
 evaluator_env_num = 8
 trading_position_r2d2_config = dict(
     exp_name='trading_position_r2d2_seed0',
@@ -67,14 +67,14 @@ trading_position_r2d2_config = dict(
         ),
         learn=dict(
             update_per_collect=30,
-            batch_size=256,
-            learning_rate=1E-4,
+            batch_size=1024,
+            learning_rate=2 * 1E-4,
             target_update_freq=1500,
             iqn=True,
         ),
         collect=dict(
-            n_sample=64,
-            unroll_len= 64 + 30, #learn_unroll + burn
+            n_sample=124,
+            unroll_len= 90 + 30, #learn_unroll + burn
             env_num=collector_env_num,
         ),
         eval=dict(env_num=evaluator_env_num, evaluator=dict(eval_freq=1440, )),
