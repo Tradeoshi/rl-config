@@ -13,7 +13,7 @@ trading_position_r2d2_config = dict(
         positions=[-1, 0, 1],
         # Prev number of kline will keep obs and LSTM NN will use it for choose the action of next step
         windows=60 * 6,
-        trading_fees=0.0000,
+        trading_fees=0.0004,
         borrow_interest_rate=0,
         portfolio_initial_value=1000000,
         initial_position='random',
