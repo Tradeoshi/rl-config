@@ -57,7 +57,7 @@ trading_position_r2d2_config = dict(
 
         burnin_step=30,
 
-        learn_unroll_len=90,
+        learn_unroll_len=64,
         model=dict(
             # window_size x obs features = 20 x 9 = 180 (This shape is used for RNN and input shape of Conv2d).
             obs_shape=60 * 6 * 26,
@@ -73,8 +73,8 @@ trading_position_r2d2_config = dict(
             iqn=True,
         ),
         collect=dict(
-            n_sample=128,
-            unroll_len= 90 + 30, #learn_unroll + burn
+            n_sample=64,
+            unroll_len= 64 + 30, #learn_unroll + burn
             env_num=collector_env_num,
         ),
         eval=dict(env_num=evaluator_env_num, evaluator=dict(eval_freq=1440, )),
