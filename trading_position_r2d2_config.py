@@ -1,8 +1,8 @@
 # rl-config
 from easydict import EasyDict
 
-collector_env_num = 1
-evaluator_env_num = 1
+collector_env_num = 5
+evaluator_env_num = 8
 trading_position_r2d2_config = dict(
     exp_name='trading_position_r2d2_seed0',
     env=dict(
