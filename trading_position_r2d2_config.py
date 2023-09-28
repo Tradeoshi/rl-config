@@ -12,7 +12,7 @@ trading_position_r2d2_config = dict(
 
         positions=[-1, 0, 1],
         # Prev number of kline will keep obs and LSTM NN will use it for choose the action of next step
-        windows=60 * 6,
+        windows=60 * 8,
         trading_fees=0.0004,
         borrow_interest_rate=0,
         portfolio_initial_value=1000000,
@@ -53,14 +53,14 @@ trading_position_r2d2_config = dict(
         priority=True,
         priority_IS_weight=False,
         discount_factor=0.99,
-        nstep=120,
+        nstep=80,
 
-        burnin_step=60,
+        burnin_step=30,
 
         learn_unroll_len=120,
         model=dict(
             # window_size x obs features = 20 x 9 = 180 (This shape is used for RNN and input shape of Conv2d).
-            obs_shape=60 * 6 * 26,
+            obs_shape=60 * 8 * 26,
             action_shape=3,
             # Used for output of Linear layer.
             encoder_hidden_size_list=[1024, 1024, 1024, 1024]
@@ -74,7 +74,7 @@ trading_position_r2d2_config = dict(
         ),
         collect=dict(
             n_sample=128, 
-            unroll_len= 120 + 60, #learn_unroll + burn
+            unroll_len= 120 + 30, #learn_unroll + burn
             env_num=collector_env_num,
         ),
         eval=dict(env_num=evaluator_env_num, evaluator=dict(eval_freq=1440, )),
