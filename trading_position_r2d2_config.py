@@ -24,7 +24,7 @@ trading_position_r2d2_config = dict(
         train_range=0.7,
         test_range=0.3,
         trading_currency='BTCUSDT',
-        indicators=['close_9_ema'],
+        indicators=['close_9_ema', 'close_21_ema', 'macd', 'atr_14', 'obv', 'bollinger_upper', 'bollinger_middle', 'bollinger_lower'],
         is_train=False,
         is_render=False,
         verbose=1,
@@ -71,7 +71,7 @@ trading_position_r2d2_config = dict(
             update_per_collect=10,
             batch_size=8,
             learning_rate=2 * 1E-4,
-            target_update_freq=1500,
+            target_update_freq=60,
             iqn=True,
         ),
         collect=dict(
@@ -85,8 +85,8 @@ trading_position_r2d2_config = dict(
                 type='exp',
                 start=0.99,
                 end=0.3,
-                decay=1000000,
-            ), replay_buffer=dict(replay_buffer_size=1000000, )
+                decay=10,
+            ), replay_buffer=dict(replay_buffer_size=10, )
         ),
     ),
 )
