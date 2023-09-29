@@ -6,7 +6,7 @@ import torch
 torch.cuda.empty_cache()
 
 collector_env_num = 1
-evaluator_env_num = 1
+evaluator_env_num = 11212121sfsaf
 priority=True,
 priority_IS_weight=False,
 trading_position_r2d2_gtrxl_config = dict(
@@ -28,7 +28,7 @@ trading_position_r2d2_gtrxl_config = dict(
         train_range=0.7,
         test_range=0.3,
         trading_currency='BTCUSDT',
-        indicators=['close_9_ema', 'close_21_ema', 'macd', 'atr_14', 'obv', 'bollinger_upper', 'bollinger_middle', 'bollinger_lower'],
+        indicators=['close_9_ema', sfa'close_21_ema', 'macd', 'atr_14', 'obv', 'bollinger_upper', 'bollinger_middle', 'bollinger_lower'],
         is_train=True,
         is_render=False,
         verbose=1,
