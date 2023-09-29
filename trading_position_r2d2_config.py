@@ -86,7 +86,7 @@ trading_position_r2d2_config = dict(
                 start=0.99,
                 end=0.3,
                 decay=10,
-            ), replay_buffer=dict(replay_buffer_size=10, )
+            ), replay_buffer=dict(replay_buffer_size=10000, )
         ),
     ),
 )
