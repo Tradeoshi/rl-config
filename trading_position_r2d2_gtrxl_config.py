@@ -99,8 +99,7 @@ trading_position_r2d2_gtrxl_config = dict(
                 decay=500000,
             ),
             replay_buffer=dict(
-                replay_buffer_size=1
-                200000,
+                replay_buffer_size=100000,
                 # priority=priority,
                 # priority_IS_weight=priority_IS_weight,
                 # priority_power_factor=0.6,
