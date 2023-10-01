@@ -1,6 +1,9 @@
 
 
 
+
+
+
 from easydict import EasyDict
 import torch
 torch.cuda.empty_cache()
@@ -20,7 +23,7 @@ trading_position_r2d2_gtrxl_config = dict(
         # Prev number of kline will keep obs and LSTM NN will use it for choose the action of next step
         windows=None,
         trading_fees=0.0003,
-        borrow_interest_rate=0.0004,
+        borrow_interest_rate=0,
         portfolio_initial_value=1000000,
         initial_position="random",
         start_date='2021-08-01',
@@ -62,25 +65,25 @@ trading_position_r2d2_gtrxl_config = dict(
         model=dict(
             obs_shape=1 * 26,
             action_shape=3,
-            hidden_size=512,
-            gru_bias=0.2,
+            hidden_size=128,
+            gru_bias=2.,
             gru_gating = True,
-            memory_len=60 * 12,
+            memory_len=80,
             dropout=0.1,
-            att_head_num=16,
-            att_layer_num=6,
-            att_head_dim=32,
-            #att_mlp_num=2,
-            #dueling = True,
+            att_head_num=2,
+            att_layer_num=2,
+            att_head_dim=8,
+            att_mlp_num=2,
+            dueling = True,
             # encoder_hidden_size_list = [512, 512, 512],
         ),
         discount_factor=0.99,
-        nstep=32 * 2,
-        unroll_len=64 * 2,
-        seq_len=64 * 2,
+        nstep=16,
+        unroll_len=32,
+        seq_len=32,
         learn=dict(
-            update_per_collect=24,
-            batch_size=512,
+            update_per_collect=6,
+            batch_size=128,
             learning_rate=0.0005,
             target_update_theta=0.001,
             value_rescale=True,
@@ -101,10 +104,10 @@ trading_position_r2d2_gtrxl_config = dict(
                 type='exp',
                 start=0.99,
                 end=0.1,
-                decay=1000000,
+                decay=5000000,
             ),
             replay_buffer=dict(
-                replay_buffer_size=1000000,
+                replay_buffer_size=600000,
                 # priority=priority,
                 # priority_IS_weight=priority_IS_weight,
                 # priority_power_factor=0.6,
