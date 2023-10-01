@@ -1,13 +1,5 @@
-
-
-
-
-
-
 from easydict import EasyDict
 import torch
-torch.cuda.empty_cache()
-
 collector_env_num = 1
 evaluator_env_num = 1
 priority=True,
@@ -66,13 +58,13 @@ trading_position_r2d2_gtrxl_config = dict(
             obs_shape=1 * 26,
             action_shape=3,
             hidden_size=128,
-            gru_bias=0.2,
-            gru_gating = True,
+            #gru_bias=0.2,
+            #gru_gating = True,
             memory_len=60 * 4,
             dropout=0.1,
-            att_head_num=8 * 4,
-            att_layer_num=3 * 4,
-            att_head_dim=16 * 4,
+            att_head_num=8 * 3,
+            att_layer_num=3 * 3,
+            att_head_dim=16 * 3,
             # att_mlp_num=2,
             # dueling = True,
             # encoder_hidden_size_list = [512, 512, 512],
@@ -83,7 +75,7 @@ trading_position_r2d2_gtrxl_config = dict(
         seq_len=32 * 4,
         learn=dict(
             update_per_collect=6 * 4,
-            batch_size=128 * 8,
+            batch_size=128 * 4,
             learning_rate=0.0005,
             target_update_theta=0.001,
             value_rescale=True,
@@ -107,7 +99,8 @@ trading_position_r2d2_gtrxl_config = dict(
                 decay=500000,
             ),
             replay_buffer=dict(
-                replay_buffer_size=1000000,
+                replay_buffer_size=1
+                200000,
                 # priority=priority,
                 # priority_IS_weight=priority_IS_weight,
                 # priority_power_factor=0.6,
