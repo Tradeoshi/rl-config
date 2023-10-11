@@ -1,5 +1,8 @@
+
 from easydict import EasyDict
 import torch
+torch.cuda.empty_cache()
+
 collector_env_num = 1
 evaluator_env_num = 1
 priority=True,
@@ -20,8 +23,8 @@ trading_position_r2d2_gtrxl_config = dict(
         initial_position="random",
         start_date='2021-08-01',
         end_date='2023-09-24',
-        train_range=0.9,
-        test_range=0.1,
+        train_range=0.7,
+        test_range=0.3,
         trading_currency='BTCUSDT',
         indicators=['close_9_ema', 'close_21_ema', 'macd', 'atr_14', 'obv', 'bollinger_upper', 'bollinger_middle', 'bollinger_lower'],
         is_train=True,
@@ -57,26 +60,25 @@ trading_position_r2d2_gtrxl_config = dict(
         model=dict(
             obs_shape=1 * 26,
             action_shape=3,
-            hidden_size=1024,
-            # encoder_hidden_size_list=[128, 512, 1024],
-            #gru_bias=0.2,
-            #gru_gating = True,
-            memory_len=60 * 2,
+            hidden_size=128,
+            gru_bias=0.2,
+            gru_gating = True,
+            memory_len=60,
             dropout=0.1,
-            att_head_num=8 * 2,
-            att_layer_num=3 * 2,
-            att_head_dim=16 * 2,
+            att_head_num=8,
+            att_layer_num=3,
+            att_head_dim=16,
             # att_mlp_num=2,
             # dueling = True,
             # encoder_hidden_size_list = [512, 512, 512],
         ),
         discount_factor=0.99,
-        nstep=16 * 2,
-        unroll_len=32 * 2,
-        seq_len=32 * 2,
+        nstep=16,
+        unroll_len=32,
+        seq_len=32,
         learn=dict(
             update_per_collect=6,
-            batch_size=128 * 2,
+            batch_size=128,
             learning_rate=0.0005,
             target_update_theta=0.001,
             value_rescale=True,
@@ -100,7 +102,7 @@ trading_position_r2d2_gtrxl_config = dict(
                 decay=500000,
             ),
             replay_buffer=dict(
-                replay_buffer_size=100000,
+                replay_buffer_size=500000,
                 # priority=priority,
                 # priority_IS_weight=priority_IS_weight,
                 # priority_power_factor=0.6,
