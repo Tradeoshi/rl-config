@@ -61,7 +61,7 @@ trading_position_r2d2_config = dict(
         learn_unroll_len=90,
         model=dict(
             # window_size x obs features = 20 x 9 = 180 (This shape is used for RNN and input shape of Conv2d).
-            obs_shape=60 * 6 * 26,
+            obs_shape=60 * 6 * 15,
             action_shape=3,
             # Used for output of Linear layer.
             encoder_hidden_size_list=[1024, 1024, 1024, 1024]
