@@ -1,7 +1,4 @@
-
 from easydict import EasyDict
-import torch
-torch.cuda.empty_cache()
 
 collector_env_num = 1
 evaluator_env_num = 1
