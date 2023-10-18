@@ -64,7 +64,7 @@ trading_position_r2d2_config = dict(
             obs_shape=60 * 6 * 15,
             action_shape=3,
             # Used for output of Linear layer.
-            encoder_hidden_size_list=[1024, 1024, 1024, 1024]
+            encoder_hidden_size_list=[128, 128, 128, 128]
         ),
         learn=dict(
             update_per_collect=30,
