@@ -67,15 +67,15 @@ trading_position_r2d2_gtrxl_config = dict(
             att_head_dim=16 * 3,
             # att_mlp_num=2,
             # dueling = True,
-            encoder_hidden_size_list = [256, 256, 256, 256, 256, 256, 256, 256],
+            encoder_hidden_size_list = [256, 256, 256, 256, 256, 256, 256],
         ),
         discount_factor=0.99,
-        nstep=32 * 4,
-        unroll_len=64 * 4,
-        seq_len=64 * 4,
+        nstep=32 * 2,
+        unroll_len=64 * 2,
+        seq_len=64 * 2,
         learn=dict(
-            update_per_collect=6 * 4,
-            batch_size=128 * 4,
+            update_per_collect=10,
+            batch_size=128 * 2,
             learning_rate=0.0005,
             target_update_theta=0.001,
             value_rescale=True,
@@ -86,7 +86,7 @@ trading_position_r2d2_gtrxl_config = dict(
             # In R2D2 policy, for each collect_env, we want to collect data of length self._traj_len=INF
             # unless the episode enters the 'done' state.
             # In each collect phase, we collect a total of <n_sample> sequence samples.
-            n_sample=128,
+            n_sample=256,
             traj_len_inf=True,
             env_num=collector_env_num,
         ),
